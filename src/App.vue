@@ -1,6 +1,7 @@
 <template>
-  <component :is="currentComponent"></component>
-  <button @click="changeComponent">Change Components</button>
+  <transition name="component-fade" mode="out-in">
+    <component :is="currentComponent"></component>
+  </transition>
 </template>
 
 <script>
@@ -14,14 +15,13 @@ export default {
   setup() {
     const currentComponent = shallowRef(Home);
 
-    const changeComponent = () => {
-      currentComponent.value = Question;
-    };
-    currentComponent.value = Home;
-
-    return { changeComponent, currentComponent };
+    return { currentComponent };
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+html {
+  background-color: var(--light-gray);
+}
+</style>

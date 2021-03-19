@@ -1,16 +1,14 @@
 <template>
-  <h1>Home component</h1>
-  <p>Do I show up?</p>
+  <div class="home">
+    <h1>Welcome to the Trivia Game</h1>
+    <p>Which I'll name later</p>
+    <button>Get Started</button>
+  </div>
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core";
 export default {
-  setup() {
-    onMounted(() => {
-      console.log("I made it");
-    });
-  },
+  setup() {},
 };
 </script>
 
