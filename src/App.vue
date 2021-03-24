@@ -1,26 +1,26 @@
 <template>
   <transition name="component-fade" mode="out-in">
-    <component :is="currentComponent"></component>
+    <component :is="currentComponent" @getStarted="getStarted"></component>
   </transition>
 </template>
 
 <script>
 import Home from "@/components/Home";
 import Question from "@/components/Question";
+import SelectCategories from "@/components/SelectCategories";
 import { shallowRef } from "@vue/reactivity";
-import { onMounted } from "@vue/runtime-core";
 
 export default {
   name: "App",
-  components: { Home, Question },
+  components: { Home, Question, SelectCategories },
   setup() {
     const currentComponent = shallowRef(Home);
 
-    onMounted(() => {
-      console.log("I am mounted");
-    });
+    const getStarted = () => {
+      currentComponent.value = SelectCategories;
+    };
 
-    return { currentComponent };
+    return { currentComponent, getStarted };
   },
 };
 </script>
