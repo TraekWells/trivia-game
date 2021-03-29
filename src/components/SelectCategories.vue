@@ -2,11 +2,6 @@
   <div class="select-categories">
     <h1>Select Categories</h1>
     <p>I made it</p>
-    <ul>
-      <li v-for="question in questions" :key="question">
-        {{ question.question }}
-      </li>
-    </ul>
     <button @click="startTrivia">Start Trivia</button>
   </div>
 </template>
@@ -24,7 +19,6 @@ export default {
         .then((data) => {
           questions.value = data;
         });
-      console.log(questions.value);
     };
 
     return { categories, startTrivia, questions };
