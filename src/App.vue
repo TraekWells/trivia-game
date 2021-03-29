@@ -1,11 +1,16 @@
 <template>
   <transition name="component-fade" mode="out-in">
-    <component :is="currentComponent" @getStarted="getStarted"></component>
+    <component
+      :is="currentComponent"
+      @getStarted="getStarted"
+      @categoryQuestions="listQuestions"
+      :question="questions[11]"
+    ></component>
   </transition>
 </template>
 
 <script>
-/* Notes: 
+/* Notes:
 
 This component will recieve questions from the 'Select Categories' component and will pass each question as a prop to the 'Questions' component.
 
@@ -26,7 +31,21 @@ export default {
       currentComponent.value = SelectCategories;
     };
 
-    return { currentComponent, getStarted, questions };
+    const listQuestions = (payload) => {
+      questions.value = payload;
+      currentComponent.value = Question;
+    };
+
+    // const currentProperties = computed(() => {
+    //   if (currentComponent === "Home") {
+    //     return { getStared: "getStarted" };
+    //   }
+    //   if (currentComponent === "SelectCategories") {
+    //     console.log("i am select categories");
+    //   }
+    // });
+
+    return { currentComponent, getStarted, questions, listQuestions };
   },
 };
 </script>

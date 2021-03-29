@@ -9,7 +9,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 export default {
-  setup() {
+  setup(props, { emit }) {
     const categories = ref([]);
     const questions = ref([]);
     const startTrivia = async () => {
@@ -18,6 +18,7 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           questions.value = data;
+          emit("categoryQuestions", questions.value);
         });
     };
 
