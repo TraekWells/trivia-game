@@ -1,20 +1,28 @@
 <template>
-  <transition name="component-fade" mode="out-in">
+  <!-- <transition name="component-fade" mode="out-in"> -->
+  <template v-if="currentComponent !== 'Question'">
     <component
       :is="currentComponent"
       @getStarted="getStarted"
       @categoryQuestions="listQuestions"
-      :question="questions[11]"
-    ></component>
-  </transition>
+    >
+    </component>
+  </template>
+  <template v-else>
+    <Question
+      v-for="(question, index) in questions"
+      :key="index"
+      v-bind="question"
+    />
+  </template>
+  <!-- </transition> -->
 </template>
 
 <script>
 /* Notes:
-
-This component will recieve questions from the 'Select Categories' component and will pass each question as a prop to the 'Questions' component.
-
+This component will receive questions from the 'Select Categories' component and will pass each question as a prop to the 'Questions' component.
 */
+
 import Home from "@/components/Home";
 import Question from "@/components/Question";
 import SelectCategories from "@/components/SelectCategories";
@@ -36,16 +44,30 @@ export default {
       currentComponent.value = Question;
     };
 
+    const renderQuestions = () => {
+      console.log("i am a question");
+    };
+
     // const currentProperties = computed(() => {
     //   if (currentComponent === "Home") {
-    //     return { getStared: "getStarted" };
+    //     return {
+    //       getStared: "getStarted",
+    //     };
     //   }
-    //   if (currentComponent === "SelectCategories") {
-    //     console.log("i am select categories");
+    //   if (currentComponent === "Question") {
+    //     return {
+    //       question: "question[0]",
+    //     };
     //   }
     // });
 
-    return { currentComponent, getStarted, questions, listQuestions };
+    return {
+      currentComponent,
+      getStarted,
+      questions,
+      listQuestions,
+      renderQuestions,
+    };
   },
 };
 </script>

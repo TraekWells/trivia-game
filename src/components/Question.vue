@@ -16,9 +16,6 @@ export default {
   props: {
     question: Object,
   },
-  setup(props) {
-    return { props };
-  },
 };
 </script>
 
