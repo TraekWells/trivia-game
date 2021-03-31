@@ -2,7 +2,6 @@
   <template v-if="questions.length === 0">
     <component
       :is="currentComponent"
-      v-bind="currentProperties"
       @getStarted="getStarted"
       @categoryQuestions="listQuestions"
     >
@@ -10,9 +9,10 @@
   </template>
   <template v-else>
     <Question
-      v-for="(question, index) in questions"
+      v-for="(question, index) in questions[index]"
       :key="index"
       :question="question"
+      @submitAnswer="updateResults"
     />
   </template>
 </template>
@@ -43,29 +43,16 @@ export default {
       currentComponent.value = Question;
     };
 
-    const renderQuestions = () => {
-      console.log("i am a question");
+    const updateResults = (payload) => {
+      console.log(payload);
     };
-
-    // const currentProperties = computed(() => {
-    //   if (currentComponent === "Home") {
-    //     return {
-    //       getStarted: "getStarted",
-    //     };
-    //   }
-    //   if (currentComponent === "Question") {
-    //     return {
-    //       question: "question[0]",
-    //     };
-    //   }
-    // });
 
     return {
       currentComponent,
       getStarted,
       questions,
       listQuestions,
-      renderQuestions,
+      updateResults,
     };
   },
 };
