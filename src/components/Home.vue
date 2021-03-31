@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Welcome to the Trivia Game</h1>
     <p>Which I'll name later</p>
-    <button class="shadow-md rounded p-3" @click="getStarted">
+    <button @click="getStarted">
       Get Started
     </button>
   </div>

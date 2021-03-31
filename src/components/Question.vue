@@ -35,8 +35,4 @@ export default {
 };
 </script>
 
-<style>
-a {
-  display: block;
-}
-</style>
+<style></style>
