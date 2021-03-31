@@ -2,6 +2,7 @@
   <div class="question">
     <h1>Question Component</h1>
     <p>{{ question.question }}</p>
+    <p>{{ question.correctAnswer }}</p>
     <a
       v-for="answer in question.incorrectAnswers"
       :key="answer"

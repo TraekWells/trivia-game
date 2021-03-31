@@ -9,10 +9,9 @@
   </template>
   <template v-else>
     <Question
-      v-for="(question, index) in questions[index]"
+      v-for="(question, index) in questions"
       :key="index"
       :question="question"
-      @submitAnswer="updateResults"
     />
   </template>
 </template>
@@ -43,23 +42,14 @@ export default {
       currentComponent.value = Question;
     };
 
-    const updateResults = (payload) => {
-      console.log(payload);
-    };
-
     return {
       currentComponent,
       getStarted,
       questions,
       listQuestions,
-      updateResults,
     };
   },
 };
 </script>
 
-<style lang="scss">
-html {
-  background-color: var(--light-gray);
-}
-</style>
+<style lang="scss"></style>
