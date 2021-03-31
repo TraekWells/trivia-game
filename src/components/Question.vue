@@ -1,8 +1,8 @@
 <template>
   <div class="question">
     <h1>Question Component</h1>
-    <p>{{ question.question }}</p>
-    <p>{{ question.correctAnswer }}</p>
+    <p>{{ question }}</p>
+    <p>{{ correctAnswer }}</p>
   </div>
 </template>
 

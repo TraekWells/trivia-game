@@ -1,8 +1,8 @@
 <template>
-  <!-- <transition name="component-fade" mode="out-in"> -->
-  <template v-if="currentComponent !== 'Question'">
+  <template v-if="questions.length === 0">
     <component
       :is="currentComponent"
+      v-bind="currentProperties"
       @getStarted="getStarted"
       @categoryQuestions="listQuestions"
     >
@@ -12,10 +12,9 @@
     <Question
       v-for="(question, index) in questions"
       :key="index"
-      v-bind="question"
+      :question="question"
     />
   </template>
-  <!-- </transition> -->
 </template>
 
 <script>
@@ -51,7 +50,7 @@ export default {
     // const currentProperties = computed(() => {
     //   if (currentComponent === "Home") {
     //     return {
-    //       getStared: "getStarted",
+    //       getStarted: "getStarted",
     //     };
     //   }
     //   if (currentComponent === "Question") {
