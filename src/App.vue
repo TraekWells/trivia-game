@@ -9,9 +9,8 @@
   </template>
   <template v-else>
     <Question
-      v-for="(question, index) in questions"
-      :key="index"
-      :question="question"
+      :question="questions[currentIndex]"
+      @submitAnswer="nextQuestion"
     />
   </template>
 </template>
@@ -32,6 +31,7 @@ export default {
   setup() {
     const currentComponent = shallowRef(Home);
     const questions = ref([]);
+    let currentIndex = ref(0);
 
     const getStarted = () => {
       currentComponent.value = SelectCategories;
@@ -42,11 +42,18 @@ export default {
       currentComponent.value = Question;
     };
 
+    const nextQuestion = (payload) => {
+      console.log(payload);
+      currentIndex.value++;
+    };
+
     return {
       currentComponent,
       getStarted,
       questions,
       listQuestions,
+      nextQuestion,
+      currentIndex,
     };
   },
 };

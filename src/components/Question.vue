@@ -3,12 +3,10 @@
     <h1>Question Component</h1>
     <p>{{ question.question }}</p>
     <p>{{ question.correctAnswer }}</p>
-    <a
-      v-for="answer in question.incorrectAnswers"
-      :key="answer"
-      @click="submitAnswer"
-      >{{ answer }}</a
-    >
+    <p v-for="answer in question.incorrectAnswers" :key="answer">
+      {{ answer }}
+    </p>
+    <button @click="submitAnswer">Next Question</button>
   </div>
 </template>
 
